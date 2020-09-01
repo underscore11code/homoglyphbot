@@ -17,6 +17,7 @@ public class EventListener extends ListenerAdapter {
     @Override
     public void onGuildMemberUpdateNickname(@NotNull GuildMemberUpdateNicknameEvent event) {
         logger.info(String.format("%#s had their nickname updated to %s in %s", event.getUser(), event.getNewNickname(), event.getGuild()));
+        if (event.getNewNickname() == null) return;
         String cleanedNick = HomoglyphBot.getInstance().handleName(event.getNewNickname());
         if (cleanedNick.equals(event.getNewNickname())) return;
         event.getMember().modifyNickname(cleanedNick).reason("Cleaned due to nick update").queue();
