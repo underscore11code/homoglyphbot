@@ -67,6 +67,6 @@ public class HomoglyphBot {
      * @return cleaned name
      */
     public String handleName(String name) {
-        return homoglyphHelper.toASCII(name);
+        return homoglyphHelper.toAlphanumeric(name);
     }
 }
